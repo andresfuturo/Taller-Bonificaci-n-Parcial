@@ -1,0 +1,14 @@
+{% extends "html/base.html" %}
+
+
+{% block title %}Formulario de Paciente{% endblock %}
+
+{% block content %}
+    <h2>Formulario de Paciente</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+    <a class="button" href="{% url 'paciente-list' %}">Volver</a>
+{% endblock %}

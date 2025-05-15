@@ -1,0 +1,28 @@
+{% extends "html/base.html" %}
+{% block content %}
+<h2>Lista de Citas</h2>
+<a class="button" href="{% url 'cita-create' %}">Nueva Cita</a>
+<table>
+    <thead>
+        <tr>
+            <th>Paciente</th>
+            <th>Fecha</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cita in object_list %}
+        <tr>
+            <td>{{ cita.paciente.nombre }}</td>
+            <td>{{ cita.fecha }}</td>
+            <td>{{ cita.descripcion }}</td>
+            <td>
+                <a class="button" href="{% url 'cita-update' cita.pk %}">Editar</a>
+                <a class="button" href="{% url 'cita-delete' cita.pk %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

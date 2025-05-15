@@ -1,0 +1,28 @@
+{% extends "html/base.html" %}
+
+{% block title %}Lista de Pacientes{% endblock %}
+
+{% block content %}
+    <h2>Lista de Pacientes</h2>
+
+    <a class="button" href="{% url 'paciente-create' %}">Nuevo Paciente</a>
+    <a class="button" href="{% url 'cita-create' %}">Nueva Cita</a>  
+
+    <table>
+        <thead>
+            <tr><th>Nombre</th><th>Email</th><th>Acciones</th></tr>
+        </thead>
+        <tbody>
+            {% for paciente in object_list %}
+            <tr>
+                <td>{{ paciente.nombre }}</td>
+                <td>{{ paciente.email }}</td>
+                <td>
+                    <a class="button" href="{% url 'paciente-update' paciente.pk %}">Editar</a>
+                    <a class="button" href="{% url 'paciente-delete' paciente.pk %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
